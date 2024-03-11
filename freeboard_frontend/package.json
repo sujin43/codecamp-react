@@ -12,6 +12,7 @@
     "@apollo/client": "^3.8.9",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "@hookform/error-message": "^2.0.1",
     "antd": "^5.13.1",
     "axios": "^1.6.5",
     "graphql": "^16.8.1",
