@@ -17,7 +17,7 @@ export const PageTitle = styled.h1`
     line-height: 53px; 
 `
 
-export const FormsWrapper = styled.div`
+export const FormsWrapper = styled.form`
     width: 100%;
     margin: 40px 0 80px;
 `
@@ -142,7 +142,8 @@ export const Radiobutton = styled.input`
     margin-right: 8px;
 `
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.input`
+    display: block;
     padding: 14px 60px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
@@ -150,5 +151,5 @@ export const SubmitButton = styled.button`
     line-height: 24px;
     background: rgba(255, 214, 0, 1);
     border: none;
-
+    margin: 80px auto 0;
 `
