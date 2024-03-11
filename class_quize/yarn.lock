@@ -410,11 +410,6 @@
   dependencies:
     tslib "^2.3.0"
 
-amdefine@>=0.0.2:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
-  integrity sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==
-
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -474,13 +469,6 @@ antd@^5.13.2:
     rc-util "^5.38.1"
     scroll-into-view-if-needed "^3.1.0"
     throttle-debounce "^5.0.0"
-
-ants@^0.0.3-alpha:
-  version "0.0.3-alpha"
-  resolved "https://registry.yarnpkg.com/ants/-/ants-0.0.3-alpha.tgz#59af887ab75c96a17c801a3f0c4b773b4d0b82bb"
-  integrity sha512-49OGEsosyqMGuK1jdaqIV7oCV/tXGHoAR/c0GBe0XJdHPLiO6vnp4i/6jQH80W/F+wjTwtELTPL0my4bhrfNTw==
-  dependencies:
-    amdefine ">=0.0.2"
 
 array-tree-filter@^2.1.0:
   version "2.1.0"
