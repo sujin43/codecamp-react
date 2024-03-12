@@ -69,7 +69,7 @@ export const ZipcodeWrapper = styled.div`
   margin: 16px 0;
 
   & + input + input {
-    margin-top: 30px;
+    margin-top: 16px;
   }
 `
 

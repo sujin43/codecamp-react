@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useForm } from "react-hook-form"
 import {
   Wrapper,
@@ -27,7 +26,7 @@ export default function BoardsNewPage() {
     handleSubmit,
     formState: { errors }
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = (data) => alert("등록이 완료되었습니다.")
 
   return (
     <Wrapper>
@@ -77,26 +76,22 @@ export default function BoardsNewPage() {
           <FormLabel>주소</FormLabel>
           <ZipcodeWrapper>
             <ZipcodeInput
-              {...register("zipcode", { required: true })}
+              {...register("zipcode", { required: false })}
               type="text"
               placeholder="07250"
             />
             <ZipcodeButton type="button">우편번호 검색</ZipcodeButton>
           </ZipcodeWrapper>
-          {errors.zipcode?.type === "required" && <ErrorText>우편번호를 입력해주세요.</ErrorText>}
-          <FormInput {...register("address1", { required: true })} type="text" />
-          <FormInput {...register("address2", { required: true })} type="text" />
+          <FormInput {...register("address1", { required: false })} type="text" />
+          <FormInput {...register("address2", { required: false })} type="text" />
         </InputWrapper>
         <InputWrapper>
           <FormLabel>유튜브</FormLabel>
           <FormInput
-            {...register("youtube", { required: true })}
+            {...register("youtube", { required: false })}
             type="text"
             placeholder="링크를 복사해주세요."
           />
-          {errors.youtube?.type === "required" && (
-            <ErrorText>유튜브 링크를 입력해주세요.</ErrorText>
-          )}
         </InputWrapper>
         <InputWrapper>
           <FormLabel>사진 첨부</FormLabel>
@@ -111,7 +106,7 @@ export default function BoardsNewPage() {
           <RadioWrapper>
             <RadioLabel htmlFor="youtube">
               <Radiobutton
-                {...register("main", { required: true })}
+                {...register("main", { required: false })}
                 type="radio"
                 name="main"
                 id="youtube"
@@ -121,7 +116,7 @@ export default function BoardsNewPage() {
             </RadioLabel>
             <RadioLabel htmlFor="photo">
               <Radiobutton
-                {...register("main", { required: true })}
+                {...register("main", { required: false })}
                 type="radio"
                 name="main"
                 id="photo"
@@ -131,7 +126,6 @@ export default function BoardsNewPage() {
             </RadioLabel>
           </RadioWrapper>
         </InputWrapper>
-        {errors.main?.type === "required" && <ErrorText>메인 설정을 선택해주세요.</ErrorText>}
         <SubmitButton type="submit" value={"등록하기"} />
       </FormsWrapper>
     </Wrapper>
