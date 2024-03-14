@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import { useMutation, gql } from "@apollo/client"
 import {
   Wrapper,
   PageTitle,
@@ -20,13 +21,38 @@ import {
   ErrorText
 } from "../../../styles/boardsNew"
 
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      writer
+      title
+      contents
+    }
+  }
+`
+
 export default function BoardsNewPage() {
+  const [createBoard] = useMutation(CREATE_BOARD)
+
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm()
-  const onSubmit = (data) => alert("등록이 완료되었습니다.")
+
+  const onSubmit = async(data) => {
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: data.writer,
+          password: data.password,
+          title: data.title,
+          contents: data.contents
+        }
+      }
+    })
+    console.log(result)
+  }
 
   return (
     <Wrapper>
@@ -36,11 +62,11 @@ export default function BoardsNewPage() {
           <InputWrapper>
             <FormLabel>작성자</FormLabel>
             <FormInput
-              {...register("name", { required: true })}
+              {...register("writer", { required: true })}
               type="text"
               placeholder="이름을 적어주세요."
             />
-            {errors.name?.type === "required" && <ErrorText>이름을 입력해주세요.</ErrorText>}
+            {errors.writer?.type === "required" && <ErrorText>이름을 입력해주세요.</ErrorText>}
           </InputWrapper>
           <InputWrapper>
             <FormLabel>비밀번호</FormLabel>
@@ -66,11 +92,11 @@ export default function BoardsNewPage() {
         <InputWrapper>
           <FormLabel>내용</FormLabel>
           <FormTextArea
-            {...register("content", { required: true })}
+            {...register("contents", { required: true })}
             type="text"
             placeholder="내용을 작성해주세요."
           />
-          {errors.content?.type === "required" && <ErrorText>내용을 입력해주세요.</ErrorText>}
+          {errors.contents?.type === "required" && <ErrorText>내용을 입력해주세요.</ErrorText>}
         </InputWrapper>
         <InputWrapper>
           <FormLabel>주소</FormLabel>
