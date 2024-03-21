@@ -19,48 +19,54 @@ import {
     ErrorText
   } from "./BoardWrite.styles"
 
-export default function BoardWriteUI({register, handleSubmit, errors, onSubmit}) {
+export default function BoardWriteUI({
+    register, 
+    handleSubmit, 
+    errors, 
+    onSubmit, 
+    isActive
+}) {
     return (
         <Wrapper>
             <PageTitle>게시물 등록</PageTitle>
             <FormsWrapper onSubmit={handleSubmit(onSubmit)}>
             <FormRowWrapper>
                 <InputWrapper>
-                <FormLabel>작성자</FormLabel>
-                <FormInput
-                    {...register("writer", { required: true })}
-                    type="text"
-                    placeholder="이름을 적어주세요."
-                />
-                {errors.writer?.type === "required" && <ErrorText>이름을 입력해주세요.</ErrorText>}
+                    <FormLabel>작성자</FormLabel>
+                    <FormInput
+                        {...register("writer", { required: true })}
+                        type="text"
+                        placeholder="이름을 적어주세요."
+                    />
+                    {errors.writer?.type === "required" && <ErrorText>이름을 입력해주세요.</ErrorText>}
                 </InputWrapper>
                 <InputWrapper>
-                <FormLabel>비밀번호</FormLabel>
-                <FormInput
-                    {...register("password", { required: true })}
-                    type="text"
-                    placeholder="비밀번호를 입력해주세요."
-                />
-                {errors.password?.type === "required" && (
-                    <ErrorText>비밀번호를 입력해주세요.</ErrorText>
-                )}
+                    <FormLabel>비밀번호</FormLabel>
+                    <FormInput
+                        {...register("password", { required: true })}
+                        type="password"
+                        placeholder="비밀번호를 입력해주세요."
+                    />
+                    {errors.password?.type === "required" && (
+                        <ErrorText>비밀번호를 입력해주세요.</ErrorText>
+                    )}
                 </InputWrapper>
             </FormRowWrapper>
             <InputWrapper>
                 <FormLabel>제목</FormLabel>
                 <FormInput
-                {...register("title", { required: true })}
-                type="text"
-                placeholder="제목을 작성해주세요."
+                    {...register("title", { required: true })}
+                    type="text"
+                    placeholder="제목을 작성해주세요."
                 />
                 {errors.title?.type === "required" && <ErrorText>제목을 입력해주세요.</ErrorText>}
             </InputWrapper>
             <InputWrapper>
                 <FormLabel>내용</FormLabel>
                 <FormTextArea
-                {...register("contents", { required: true })}
-                type="text"
-                placeholder="내용을 작성해주세요."
+                    {...register("contents", { required: true })}
+                    type="text"
+                    placeholder="내용을 작성해주세요."
                 />
                 {errors.contents?.type === "required" && <ErrorText>내용을 입력해주세요.</ErrorText>}
             </InputWrapper>
@@ -118,7 +124,7 @@ export default function BoardWriteUI({register, handleSubmit, errors, onSubmit})
                 </RadioLabel>
                 </RadioWrapper>
             </InputWrapper>
-            <SubmitButton type="submit" value={"등록하기"} />
+            <SubmitButton type="submit" value={"등록하기"} isActive={isActive} />
             </FormsWrapper>
         </Wrapper>
     )

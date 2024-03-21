@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 `
 
 export const PageTitle = styled.h1`
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 3.6rem;
   font-weight: 700;
   line-height: 5.3rem;
@@ -42,7 +41,6 @@ export const InputWrapper = styled.div`
 export const FormLabel = styled.span`
   display: block;
   margin-bottom: 1.6rem;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
@@ -53,12 +51,14 @@ export const FormInput = styled.input`
   height: 5.2rem;
   border: 1px solid rgba(189, 189, 189, 1);
   padding: 1.4rem 1.6rem;
+  border-radius: 5px;
 `
 
 export const FormTextArea = styled.textarea`
   width: 100%;
   height: 48rem;
   border: 1px solid rgba(189, 189, 189, 1);
+  border-radius: 5px;
   padding: 1.4rem 1.6rem;
 `
 
@@ -66,7 +66,7 @@ export const ZipcodeWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 1.6rem;
-  margin: 1.6rem 0;
+  margin: 0 0 1.6rem;
 
   & + input + input {
     margin-top: 1.6rem;
@@ -78,6 +78,7 @@ export const ZipcodeInput = styled.input`
   height: 5.2rem;
   padding: 1.4rem 1.6rem;
   border: 1px solid rgba(189, 189, 189, 1);
+  border-radius: 5px;
 `
 
 export const ZipcodeButton = styled.button`
@@ -85,6 +86,7 @@ export const ZipcodeButton = styled.button`
   padding: 1.4rem 1.6rem;
   background-color: #000;
   color: #fff;
+  border-radius: 5px;
 `
 
 export const UploadWrapper = styled.div`
@@ -101,7 +103,7 @@ export const UploadButton = styled.button`
   position: relative;
   background: rgba(189, 189, 189, 1);
   border: none;
-  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 5px;
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.8rem;
@@ -129,7 +131,6 @@ export const RadioWrapper = styled.div`
 export const RadioLabel = styled.label`
   display: flex;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
@@ -145,12 +146,12 @@ export const Radiobutton = styled.input`
 export const SubmitButton = styled.input`
   display: block;
   padding: 1.4rem 6rem;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
-  background: rgba(255, 214, 0, 1);
+  background-color: ${(props) => props.isActive ? "#FFD600" : "#bdbdbd"};
   border: none;
+  border-radius: 5px;
   margin: 8rem auto 0;
 `
 
