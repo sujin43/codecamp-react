@@ -111,7 +111,7 @@ export const SearchInput = styled.input`
 `
 
 export const DateInput = styled.input`
-  width: 24.4rem;
+  min-width: 25rem;
   height: 5.2rem;
   border: 1px solid #bdbdbd;
   padding: 1.4rem 1.6rem;
@@ -164,6 +164,13 @@ export const TableTd = styled.td`
     line-height: 2.368rem;
     text-align: center;
     padding: 1.4rem 0;
+`
+
+export const BoardTitle = styled.button`
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.368rem;
+    text-align: center;
 `
 
 export const TableFooter = styled.div`

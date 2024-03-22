@@ -1,6 +1,6 @@
 import * as S from "./BoardList.styles"
 
-export default function BoardListlUI({data}) {
+export default function BoardListlUI({data, onClickMove, onClickWrite}) {
     return (
         <S.Wrapper>
             <S.Title>베스트 게시글</S.Title>
@@ -117,7 +117,7 @@ export default function BoardListlUI({data}) {
                             data?.fetchBoards.map((board, index) => (
                                 <S.TableRow>
                                     <S.TableTd>{data.fetchBoards.length - index}</S.TableTd>
-                                    <S.TableTd>{board.title}</S.TableTd>
+                                    <S.TableTd><S.BoardTitle onClick={() => onClickMove(board._id)}>{board.title}</S.BoardTitle></S.TableTd>
                                     <S.TableTd>{board.writer}</S.TableTd>
                                     <S.TableTd>{board.createdAt.split("T")[0]}</S.TableTd>
                                 </S.TableRow>
@@ -136,7 +136,7 @@ export default function BoardListlUI({data}) {
                             <span className="hidden">다음</span>
                         </S.PaginationNextButton>
                     </S.Pagination>
-                    <S.BoardWriteButton type="button">게시물 등록하기</S.BoardWriteButton>
+                    <S.BoardWriteButton type="button" onClick={onClickWrite}>게시물 등록하기</S.BoardWriteButton>
                 </S.TableFooter>
             </S.TableWrapper>
         </S.Wrapper>
