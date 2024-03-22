@@ -13,7 +13,7 @@ export const Title = styled.h1`
   text-align: center;
 `
 
-export const BestPostWrapper = styled.div`
+export const BestPosts = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -33,7 +33,7 @@ export const BestPostImg = styled.img`
   background-color: gray;
 `
 
-export const BestPostContentsWrapper = styled.div`
+export const BestPostContents = styled.div`
   width: 100%;
   height: calc(100% - 12rem);
   display: flex;
@@ -42,23 +42,23 @@ export const BestPostContentsWrapper = styled.div`
   padding: 2rem;
 `
 
-export const BestPostContentsTitle = styled.p`
+export const BestPostTitle = styled.p`
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 2.664rem;
 `
 
-export const BestPostContentsInfo = styled.div`
+export const BestPostInfo = styled.div`
   display: flex;
   justify-content: space-between;
 `
 
-export const BestPostContentsProfile = styled.div`
+export const BestPostProfile = styled.div`
   display: flex;
   align-items: center;
 `
 
-export const BestPostContentsWriter = styled.span`
+export const BestPostWriter = styled.span`
   display: inline-block;
   font-size: 1.6rem;
   font-weight: 400;
@@ -66,7 +66,7 @@ export const BestPostContentsWriter = styled.span`
   margin-left: 0.4rem;
 `
 
-export const BestPostContentsDate = styled.p`
+export const BestPostDate = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.776rem;
@@ -100,7 +100,7 @@ export const SearchSection = styled.div`
 export const SearchInput = styled.input`
   width: 77.6rem;
   height: 5.2rem;
-  background: url(../icons/icon_search.png) no-repeat 14px 16px/24px 24px;
+  background: url(../icons/icon_search.png) no-repeat 1.6rem 1.4rem/2.4rem 2.4rem;
   background-color: #f2f2f2;
   border-radius: 10px;
   border: none;
@@ -131,26 +131,26 @@ export const SearchButton = styled.button`
   border-radius: 10px;
 `
 
-export const BoardTableWrapper = styled.div`
+export const TableWrapper = styled.div`
   width: 100%;
   margin-top: 4rem;
 `
 
-export const BoardTable = styled.table`
+export const Table = styled.table`
   width: 100%;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   border-collapse: collapse;
 `
 
-export const BoardTableRow = styled.tr`
+export const TableRow = styled.tr`
     border-bottom: 1px solid #bdbdbd;
     &:last-child {
         border: none;
     }
 `
 
-export const BoardTableTh = styled.th`
+export const TableTh = styled.th`
     font-size: 1.8rem;
     font-weight: 500;
     line-height: 2.664rem;
@@ -158,7 +158,7 @@ export const BoardTableTh = styled.th`
     border-bottom: 1px solid #bdbdbd;
 `
 
-export const BoardTableTd = styled.td`
+export const TableTd = styled.td`
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.368rem;
@@ -166,7 +166,7 @@ export const BoardTableTd = styled.td`
     padding: 1.4rem 0;
 `
 
-export const BoardTableFooter = styled.div`
+export const TableFooter = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
@@ -191,7 +191,7 @@ export const PaginationNextButton = styled.button`
     background: url(../icons/icon_arrow_right.png) no-repeat center/2.4rem 2.4rem;
 `
 
-export const PaginationButton = styled.button`
+export const Page = styled.button`
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.92rem;
