@@ -1,131 +1,118 @@
-import {
-    Wrapper,
-    PageTitle,
-    FormsWrapper,
-    FormRowWrapper,
-    InputWrapper,
-    FormLabel,
-    FormInput,
-    FormTextArea,
-    ZipcodeWrapper,
-    ZipcodeInput,
-    ZipcodeButton,
-    UploadWrapper,
-    UploadButton,
-    RadioWrapper,
-    RadioLabel,
-    Radiobutton,
-    SubmitButton,
-    ErrorText
-  } from "./BoardWrite.styles"
+import * as S from "./BoardWrite.styles"
 
 export default function BoardWriteUI({
-    register, 
-    handleSubmit, 
-    errors, 
-    onSubmit, 
-    isActive
+  isEdit,
+  register,
+  handleSubmit,
+  errors,
+  onClickSubmit,
+  onClickUpdate,
+  isActive
 }) {
-    return (
-        <Wrapper>
-            <PageTitle>게시물 등록</PageTitle>
-            <FormsWrapper onSubmit={handleSubmit(onSubmit)}>
-            <FormRowWrapper>
-                <InputWrapper>
-                    <FormLabel>작성자</FormLabel>
-                    <FormInput
-                        {...register("writer", { required: true })}
-                        type="text"
-                        placeholder="이름을 적어주세요."
-                    />
-                    {errors.writer?.type === "required" && <ErrorText>이름을 입력해주세요.</ErrorText>}
-                </InputWrapper>
-                <InputWrapper>
-                    <FormLabel>비밀번호</FormLabel>
-                    <FormInput
-                        {...register("password", { required: true })}
-                        type="password"
-                        placeholder="비밀번호를 입력해주세요."
-                    />
-                    {errors.password?.type === "required" && (
-                        <ErrorText>비밀번호를 입력해주세요.</ErrorText>
-                    )}
-                </InputWrapper>
-            </FormRowWrapper>
-            <InputWrapper>
-                <FormLabel>제목</FormLabel>
-                <FormInput
-                    {...register("title", { required: true })}
-                    type="text"
-                    placeholder="제목을 작성해주세요."
-                />
-                {errors.title?.type === "required" && <ErrorText>제목을 입력해주세요.</ErrorText>}
-            </InputWrapper>
-            <InputWrapper>
-                <FormLabel>내용</FormLabel>
-                <FormTextArea
-                    {...register("contents", { required: true })}
-                    type="text"
-                    placeholder="내용을 작성해주세요."
-                />
-                {errors.contents?.type === "required" && <ErrorText>내용을 입력해주세요.</ErrorText>}
-            </InputWrapper>
-            <InputWrapper>
-                <FormLabel>주소</FormLabel>
-                <ZipcodeWrapper>
-                <ZipcodeInput
-                    {...register("zipcode", { required: false })}
-                    type="text"
-                    placeholder="07250"
-                />
-                <ZipcodeButton type="button">우편번호 검색</ZipcodeButton>
-                </ZipcodeWrapper>
-                <FormInput {...register("address1", { required: false })} type="text" />
-                <FormInput {...register("address2", { required: false })} type="text" />
-            </InputWrapper>
-            <InputWrapper>
-                <FormLabel>유튜브</FormLabel>
-                <FormInput
-                {...register("youtube", { required: false })}
-                type="text"
-                placeholder="링크를 복사해주세요."
-                />
-            </InputWrapper>
-            <InputWrapper>
-                <FormLabel>사진 첨부</FormLabel>
-                <UploadWrapper>
-                <UploadButton type="button">Upload</UploadButton>
-                <UploadButton type="button">Upload</UploadButton>
-                <UploadButton type="button">Upload</UploadButton>
-                </UploadWrapper>
-            </InputWrapper>
-            <InputWrapper>
-                <FormLabel>메인 설정</FormLabel>
-                <RadioWrapper>
-                <RadioLabel htmlFor="youtube">
-                    <Radiobutton
-                    {...register("main", { required: false })}
-                    type="radio"
-                    name="main"
-                    id="youtube"
-                    value="youtube"
-                    />
-                    유튜브
-                </RadioLabel>
-                <RadioLabel htmlFor="photo">
-                    <Radiobutton
-                    {...register("main", { required: false })}
-                    type="radio"
-                    name="main"
-                    id="photo"
-                    value="photo"
-                    />
-                    사진
-                </RadioLabel>
-                </RadioWrapper>
-            </InputWrapper>
-            <SubmitButton type="submit" value={"등록하기"} isActive={isActive} />
-            </FormsWrapper>
-        </Wrapper>
-    )
+  return (
+    <S.Wrapper>
+      <S.PageTitle>{isEdit ? "게시물 수정" : "게시물 등록"}</S.PageTitle>
+      <S.FormsWrapper onSubmit={isEdit ? handleSubmit(onClickUpdate) : handleSubmit(onClickSubmit)}>
+        <S.FormRowWrapper>
+          <S.InputWrapper>
+            <S.FormLabel>작성자</S.FormLabel>
+            <S.FormInput
+              {...register("writer", { required: true })}
+              type="text"
+              placeholder="이름을 적어주세요."
+            />
+            {errors.writer?.type === "required" && <S.ErrorText>이름을 입력해주세요.</S.ErrorText>}
+          </S.InputWrapper>
+          <S.InputWrapper>
+            <S.FormLabel>비밀번호</S.FormLabel>
+            <S.FormInput
+              {...register("password", { required: true })}
+              type="password"
+              placeholder="비밀번호를 입력해주세요."
+            />
+            {errors.password?.type === "required" && (
+              <S.ErrorText>비밀번호를 입력해주세요.</S.ErrorText>
+            )}
+          </S.InputWrapper>
+        </S.FormRowWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>제목</S.FormLabel>
+          <S.FormInput
+            {...register("title", { required: true })}
+            type="text"
+            placeholder="제목을 작성해주세요."
+          />
+          {errors.title?.type === "required" && <S.ErrorText>제목을 입력해주세요.</S.ErrorText>}
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>내용</S.FormLabel>
+          <S.FormTextArea
+            {...register("contents", { required: true })}
+            type="text"
+            placeholder="내용을 작성해주세요."
+          />
+          {errors.contents?.type === "required" && <S.ErrorText>내용을 입력해주세요.</S.ErrorText>}
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>주소</S.FormLabel>
+          <S.ZipcodeWrapper>
+            <S.ZipcodeInput
+              {...register("zipcode", { required: false })}
+              type="text"
+              placeholder="07250"
+            />
+            <S.ZipcodeButton type="button">우편번호 검색</S.ZipcodeButton>
+          </S.ZipcodeWrapper>
+          <S.FormInput {...register("address1", { required: false })} type="text" />
+          <S.FormInput {...register("address2", { required: false })} type="text" />
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>유튜브</S.FormLabel>
+          <S.FormInput
+            {...register("youtube", { required: false })}
+            type="text"
+            placeholder="링크를 복사해주세요."
+          />
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>사진 첨부</S.FormLabel>
+          <S.UploadWrapper>
+            <S.UploadButton type="button">Upload</S.UploadButton>
+            <S.UploadButton type="button">Upload</S.UploadButton>
+            <S.UploadButton type="button">Upload</S.UploadButton>
+          </S.UploadWrapper>
+        </S.InputWrapper>
+        <S.InputWrapper>
+          <S.FormLabel>메인 설정</S.FormLabel>
+          <S.RadioWrapper>
+            <S.RadioLabel htmlFor="youtube">
+              <S.Radiobutton
+                {...register("main", { required: false })}
+                type="radio"
+                name="main"
+                id="youtube"
+                value="youtube"
+              />
+              유튜브
+            </S.RadioLabel>
+            <S.RadioLabel htmlFor="photo">
+              <S.Radiobutton
+                {...register("main", { required: false })}
+                type="radio"
+                name="main"
+                id="photo"
+                value="photo"
+              />
+              사진
+            </S.RadioLabel>
+          </S.RadioWrapper>
+        </S.InputWrapper>
+        <S.SubmitButton
+          type="submit"
+          value={isEdit ? "수정하기" : "등록하기"}
+          isActive={isActive}
+        />
+      </S.FormsWrapper>
+    </S.Wrapper>
+  )
 }

@@ -15,6 +15,11 @@ export default function BoardDetail() {
     }
   })
 
+  const onClickEdit = () => {
+    //수정하기
+    router.push(`/boards/${boardId}/edit`)
+  }
+
   const onClickDelete = () => {
     const result = deleteBoard({
       variables: {
@@ -24,5 +29,5 @@ export default function BoardDetail() {
     router.push("/boards")
   }
 
-  return <BoardDetailUI data={data} onClickDelete={onClickDelete} />
+  return <BoardDetailUI data={data} onClickDelete={onClickDelete} onClickEdit={onClickEdit} />
 }

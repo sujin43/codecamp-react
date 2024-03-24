@@ -119,7 +119,7 @@ export const UploadButton = styled.button`
     margin: 0 auto;
     width: 2.4rem;
     height: 2.4rem;
-    background: url(../icons/icon_plus.png) no-repeat center/2.4rem 2.4rem;
+    background: url(../../icons/icon_plus.png) no-repeat center/2.4rem 2.4rem;
   }
 `
 
@@ -149,7 +149,7 @@ export const SubmitButton = styled.input`
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 2.4rem;
-  background-color: ${(props) => props.isActive ? "#FFD600" : "#bdbdbd"};
+  background-color: ${(props) => (props.isActive ? "#FFD600" : "#bdbdbd")};
   border: none;
   border-radius: 5px;
   margin: 8rem auto 0;

@@ -41,7 +41,7 @@ import {
   DeleteButton
 } from "./BoardDetail.styles"
 
-export default function BoardDetailUI({ data, onClickDelete }) {
+export default function BoardDetailUI({ data, onClickDelete, onClickEdit }) {
   return (
     <Wrapper>
       <ContentWrapper>
@@ -81,7 +81,9 @@ export default function BoardDetailUI({ data, onClickDelete }) {
       </ContentWrapper>
       <ButtonWrapper>
         <BoardButton type="button">목록으로</BoardButton>
-        <BoardButton type="button">수정하기</BoardButton>
+        <BoardButton type="button" onClick={onClickEdit}>
+          수정하기
+        </BoardButton>
         <BoardButton type="button" onClick={onClickDelete}>
           삭제하기
         </BoardButton>
