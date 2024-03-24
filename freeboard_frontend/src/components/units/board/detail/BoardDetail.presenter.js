@@ -1,245 +1,205 @@
-import {
-  Wrapper,
-  ContentWrapper,
-  Header,
-  WriterWrapper,
-  WriteInfo,
-  Writer,
-  Date,
-  FileButton,
-  LocationButton,
-  Contents,
-  Title,
-  ContentImg,
-  Content,
-  Video,
-  ButtonWrapper,
-  GoodButton,
-  BadButton,
-  BoardButton,
-  CommentsWrapper,
-  CommentInputSection,
-  CommentTitle,
-  WriterInfoInputs,
-  WriterInfoInput,
-  CommentInputWrapper,
-  CommentInput,
-  CommentInputAction,
-  CommentLengthCount,
-  CommentButton,
-  StarButtonWrapper,
-  StarButton,
-  CommentListWrapper,
-  CommentListItem,
-  CommentContentWrapper,
-  CommentContentsTop,
-  CommentWriter,
-  CommentContent,
-  CommentDate,
-  CommentActionButtons,
-  ModifyButton,
-  DeleteButton
-} from "./BoardDetail.styles"
+import * as S from "./BoardDetail.styles"
 
 export default function BoardDetailUI({ data, onClickDelete, onClickEdit }) {
   return (
-    <Wrapper>
-      <ContentWrapper>
-        <Header>
-          <WriterWrapper>
+    <S.Wrapper>
+      <S.ContentWrapper>
+        <S.Header>
+          <S.WriterWrapper>
             <img src="../../../images/img_profile.png" width={56} height={56} alt="프로필 사진" />
-            <WriteInfo>
-              <Writer>{data?.fetchBoard?.writer}</Writer>
-              <Date>Date: 2021.02.18</Date>
-            </WriteInfo>
-          </WriterWrapper>
+            <S.WriteInfo>
+              <S.Writer>{data?.fetchBoard?.writer}</S.Writer>
+              <S.Date>Date: 2021.02.18</S.Date>
+            </S.WriteInfo>
+          </S.WriterWrapper>
           <div>
-            <FileButton type="button">
+            <S.FileButton type="button">
               <span className="hidden">첨부파일</span>
-            </FileButton>
-            <LocationButton type="button">
+            </S.FileButton>
+            <S.LocationButton type="button">
               <span className="hidden">위치정보</span>
-            </LocationButton>
+            </S.LocationButton>
           </div>
-        </Header>
-        <Contents>
-          <Title>{data?.fetchBoard?.title}</Title>
-          <ContentImg>
+        </S.Header>
+        <S.Contents>
+          <S.Title>{data?.fetchBoard?.title}</S.Title>
+          <S.ContentImg>
             <img src="" alt="" />
-          </ContentImg>
-          <Content>{data?.fetchBoard?.contents}</Content>
-          <Video></Video>
-          <ButtonWrapper>
-            <GoodButton type="button">
+          </S.ContentImg>
+          <S.Content>{data?.fetchBoard?.contents}</S.Content>
+          <S.Video></S.Video>
+          <S.ButtonWrapper>
+            <S.GoodButton type="button">
               <span>1920</span>
-            </GoodButton>
-            <BadButton type="button">
+            </S.GoodButton>
+            <S.BadButton type="button">
               <span>1920</span>
-            </BadButton>
-          </ButtonWrapper>
-        </Contents>
-      </ContentWrapper>
-      <ButtonWrapper>
-        <BoardButton type="button">목록으로</BoardButton>
-        <BoardButton type="button" onClick={onClickEdit}>
+            </S.BadButton>
+          </S.ButtonWrapper>
+        </S.Contents>
+      </S.ContentWrapper>
+      <S.ButtonWrapper>
+        <S.BoardButton type="button">목록으로</S.BoardButton>
+        <S.BoardButton type="button" onClick={onClickEdit}>
           수정하기
-        </BoardButton>
-        <BoardButton type="button" onClick={onClickDelete}>
+        </S.BoardButton>
+        <S.BoardButton type="button" onClick={onClickDelete}>
           삭제하기
-        </BoardButton>
-      </ButtonWrapper>
-      <CommentsWrapper>
-        <CommentInputSection>
-          <CommentTitle> 댓글</CommentTitle>
-          <WriterInfoInputs>
-            <WriterInfoInput type="text" placeholder="작성자" />
-            <WriterInfoInput type="password" placeholder="비밀번호" />
-            <StarButtonWrapper>
-              <StarButton type="button">
+        </S.BoardButton>
+      </S.ButtonWrapper>
+      <S.CommentsWrapper>
+        <S.CommentInputSection>
+          <S.CommentTitle> 댓글</S.CommentTitle>
+          <S.WriterInfoInputs>
+            <S.WriterInfoInput type="text" placeholder="작성자" />
+            <S.WriterInfoInput type="password" placeholder="비밀번호" />
+            <S.StarButtonWrapper>
+              <S.StarButton type="button">
                 <span className="hidden">별점</span>
-              </StarButton>
-              <StarButton type="button">
+              </S.StarButton>
+              <S.StarButton type="button">
                 <span className="hidden">별점</span>
-              </StarButton>
-              <StarButton type="button">
+              </S.StarButton>
+              <S.StarButton type="button">
                 <span className="hidden">별점</span>
-              </StarButton>
-              <StarButton type="button">
+              </S.StarButton>
+              <S.StarButton type="button">
                 <span className="hidden">별점</span>
-              </StarButton>
-              <StarButton type="button">
+              </S.StarButton>
+              <S.StarButton type="button">
                 <span className="hidden">별점</span>
-              </StarButton>
-            </StarButtonWrapper>
-          </WriterInfoInputs>
-          <CommentInputWrapper>
-            <CommentInput placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다."></CommentInput>
-            <CommentInputAction>
-              <CommentLengthCount>0/100</CommentLengthCount>
-              <CommentButton type="button">등록하기</CommentButton>
-            </CommentInputAction>
-          </CommentInputWrapper>
-        </CommentInputSection>
-        <CommentListWrapper>
-          <CommentListItem>
-            <CommentContentWrapper>
+              </S.StarButton>
+            </S.StarButtonWrapper>
+          </S.WriterInfoInputs>
+          <S.CommentInputWrapper>
+            <S.CommentInput placeholder="개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다." />
+            <S.CommentInputAction>
+              <S.CommentLengthCount>0/100</S.CommentLengthCount>
+              <S.CommentButton type="button">등록하기</S.CommentButton>
+            </S.CommentInputAction>
+          </S.CommentInputWrapper>
+        </S.CommentInputSection>
+        <S.CommentListWrapper>
+          <S.CommentListItem>
+            <S.CommentContentWrapper>
               <img src="../../../images/img_profile.png" width={40} height={40} alt="프로필 사진" />
               <div>
-                <CommentContentsTop>
-                  <CommentWriter>노원두</CommentWriter>
-                  <StarButtonWrapper>
-                    <StarButton type="button">
+                <S.CommentContentsTop>
+                  <S.CommentWriter>노원두</S.CommentWriter>
+                  <S.StarButtonWrapper>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                  </StarButtonWrapper>
-                </CommentContentsTop>
-                <CommentContent>
+                    </S.StarButton>
+                  </S.StarButtonWrapper>
+                </S.CommentContentsTop>
+                <S.CommentContent>
                   진짜 유익하고 정말 필요한 정보인 것 같아요~! 앞으로도 좋은 정보 부탁드립니다~!
-                </CommentContent>
-                <CommentDate>2021.02.22</CommentDate>
+                </S.CommentContent>
+                <S.CommentDate>2021.02.22</S.CommentDate>
               </div>
-            </CommentContentWrapper>
-            <CommentActionButtons>
-              <ModifyButton type="button">
+            </S.CommentContentWrapper>
+            <S.CommentActionButtons>
+              <S.ModifyButton type="button">
                 <span className="hidden">수정</span>
-              </ModifyButton>
-              <DeleteButton type="button">
+              </S.ModifyButton>
+              <S.DeleteButton type="button">
                 <span className="hidden">삭제</span>
-              </DeleteButton>
-            </CommentActionButtons>
-          </CommentListItem>
-          <CommentListItem>
-            <CommentContentWrapper>
+              </S.DeleteButton>
+            </S.CommentActionButtons>
+          </S.CommentListItem>
+          <S.CommentListItem>
+            <S.CommentContentWrapper>
               <img src="../../../images/img_profile.png" width={40} height={40} alt="프로필 사진" />
               <div>
-                <CommentContentsTop>
-                  <CommentWriter>노원두</CommentWriter>
-                  <StarButtonWrapper>
-                    <StarButton type="button">
+                <S.CommentContentsTop>
+                  <S.CommentWriter>노원두</S.CommentWriter>
+                  <S.StarButtonWrapper>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                  </StarButtonWrapper>
-                </CommentContentsTop>
-                <CommentContent>
+                    </S.StarButton>
+                  </S.StarButtonWrapper>
+                </S.CommentContentsTop>
+                <S.CommentContent>
                   진짜 유익하고 정말 필요한 정보인 것 같아요~! 앞으로도 좋은 정보 부탁드립니다~!
-                </CommentContent>
-                <CommentDate>2021.02.22</CommentDate>
+                </S.CommentContent>
+                <S.CommentDate>2021.02.22</S.CommentDate>
               </div>
-            </CommentContentWrapper>
-            <CommentActionButtons>
-              <ModifyButton type="button">
+            </S.CommentContentWrapper>
+            <S.CommentActionButtons>
+              <S.ModifyButton type="button">
                 <span className="hidden">수정</span>
-              </ModifyButton>
-              <DeleteButton type="button">
+              </S.ModifyButton>
+              <S.DeleteButton type="button">
                 <span className="hidden">삭제</span>
-              </DeleteButton>
-            </CommentActionButtons>
-          </CommentListItem>
-          <CommentListItem>
-            <CommentContentWrapper>
+              </S.DeleteButton>
+            </S.CommentActionButtons>
+          </S.CommentListItem>
+
+          <S.CommentListItem>
+            <S.CommentContentWrapper>
               <img src="../../../images/img_profile.png" width={40} height={40} alt="프로필 사진" />
               <div>
-                <CommentContentsTop>
-                  <CommentWriter>노원두</CommentWriter>
-                  <StarButtonWrapper>
-                    <StarButton type="button">
+                <S.CommentContentsTop>
+                  <S.CommentWriter>노원두</S.CommentWriter>
+                  <S.StarButtonWrapper>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                    <StarButton type="button">
+                    </S.StarButton>
+                    <S.StarButton type="button">
                       <span className="hidden">별점</span>
-                    </StarButton>
-                  </StarButtonWrapper>
-                </CommentContentsTop>
-                <CommentContent>
+                    </S.StarButton>
+                  </S.StarButtonWrapper>
+                </S.CommentContentsTop>
+                <S.CommentContent>
                   진짜 유익하고 정말 필요한 정보인 것 같아요~! 앞으로도 좋은 정보 부탁드립니다~!
-                </CommentContent>
-                <CommentDate>2021.02.22</CommentDate>
+                </S.CommentContent>
+                <S.CommentDate>2021.02.22</S.CommentDate>
               </div>
-            </CommentContentWrapper>
-            <CommentActionButtons>
-              <ModifyButton type="button">
+            </S.CommentContentWrapper>
+            <S.CommentActionButtons>
+              <S.ModifyButton type="button">
                 <span className="hidden">수정</span>
-              </ModifyButton>
-              <DeleteButton type="button">
+              </S.ModifyButton>
+              <S.DeleteButton type="button">
                 <span className="hidden">삭제</span>
-              </DeleteButton>
-            </CommentActionButtons>
-          </CommentListItem>
-        </CommentListWrapper>
-      </CommentsWrapper>
-    </Wrapper>
+              </S.DeleteButton>
+            </S.CommentActionButtons>
+          </S.CommentListItem>
+        </S.CommentListWrapper>
+      </S.CommentsWrapper>
+    </S.Wrapper>
   )
 }
