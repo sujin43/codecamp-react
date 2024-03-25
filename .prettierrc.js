@@ -46,7 +46,7 @@ module.exports = {
 	 * true: 홀따옴표로 사용
 	 * false: 큰따옴표로 사용
 	 */
-	jsxSingleQuote: true,
+	jsxSingleQuote: false,
 
 	/**
 	 * @template: trailingComma: "<es5|none|all>"
@@ -79,7 +79,7 @@ module.exports = {
 	 * always : 괄호 사용
 	 * avoid : 괄호 제거
 	 */
-	arrowParens: 'always'
+	arrowParens: 'always',
 
 	// endOfLine: 'auto', // EoF 방식, OS별로 처리 방식이 다름
 	// htmlWhitespaceSensitivity: 'css', // HTML 공백 감도 설정
