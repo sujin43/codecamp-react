@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "es5", //어떤 버전의 js로 변환할지
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true, //ts와 js 혼용 가능 여부
+		"skipLibCheck": true, //외부 라이브러리 타입도 체크할지
+		"strict": true, //엄격하게 검사할지
+		"forceConsistentCasingInFileNames": true, //파일 이름 대소문자 구분 무시할지
+		"noEmit": true, //ts -> js파일로 변경할 때 변경 파일들을 생성하지 않을지
+		"incremental": true,
+		"esModuleInterop": true,
+		"module": "esnext", //js 최신버전 -> 다른 파일 불러올 때 import (module 방식)
+		//option: "commonjs -> 다른 파일 불러올 때 require() (구버전)
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve"
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules"]
+}
