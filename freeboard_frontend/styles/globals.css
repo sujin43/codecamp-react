@@ -107,30 +107,30 @@ a {
 } */
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background-color: unset;
-  list-style-type: none;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	background-color: unset;
+	list-style-type: none;
 }
 
 button {
-  border: none;
+	border: none;
 }
 
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  font-family: "Noto Sans KR", sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: polygon(0 0, 0 0, 0 0);
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: polygon(0 0, 0 0, 0 0);
 }
