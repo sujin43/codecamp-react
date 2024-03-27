@@ -12,8 +12,6 @@ export default function BoardWrite({ isEdit, data }) {
 	const [updateBoard] = useMutation(UPDATE_BOARD)
 	const [isActive, setIsActive] = useState(false) //등록하기 버튼 활성화 여부
 
-	console.log(data)
-
 	const {
 		control,
 		register,

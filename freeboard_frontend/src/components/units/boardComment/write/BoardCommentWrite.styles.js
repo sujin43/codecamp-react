@@ -60,13 +60,14 @@ export const CommentLengthCount = styled.span`
 	color: #bdbdbd;
 `
 
-export const CommentButton = styled.button`
+export const CommentButton = styled.input`
 	padding: 1.4rem 1.6rem;
-	background-color: #000;
+	background-color: ${(props) => (props.isActive ? '#000' : 'gray')};
 	font-size: 1.6rem;
 	font-weight: 500;
 	line-height: 2.4rem;
 	color: #fff;
+	border: none;
 `
 
 export const StarButtonWrapper = styled.div`
@@ -74,10 +75,11 @@ export const StarButtonWrapper = styled.div`
 	flex-direction: row;
 `
 
-export const StarButton = styled.button`
+export const StarButton = styled.input`
 	width: 2.4rem;
 	height: 2.4rem;
 	background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z' fill='%23BDBDBD'/%3E%3C/svg%3E%0A");
+	border: none;
 
 	&.on {
 		background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L14.2451 8.90983H21.5106L15.6327 13.1803L17.8779 20.0902L12 15.8197L6.12215 20.0902L8.36729 13.1803L2.48944 8.90983H9.75486L12 2Z' fill='%23FFD600'/%3E%3C/svg%3E%0A");

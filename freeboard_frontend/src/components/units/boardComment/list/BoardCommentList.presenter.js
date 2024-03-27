@@ -5,28 +5,18 @@ export default function BoardCommentListUI({ comments }) {
 	return (
 		<S.CommentListWrapper>
 			{comments?.fetchBoardComments.map((comment) => (
-				<S.CommentListItem>
+				<S.CommentListItem key={comment._id}>
 					<S.CommentContentWrapper>
 						<img src='@/images/img_profile.png' width={40} height={40} alt='프로필 사진' />
 						<div>
 							<S.CommentContentsTop>
 								<S.CommentWriter>{comment.writer}</S.CommentWriter>
 								<StarButtonWrapper>
-									<StarButton type='button'>
-										<span className='hidden'>별점</span>
-									</StarButton>
-									<StarButton type='button'>
-										<span className='hidden'>별점</span>
-									</StarButton>
-									<StarButton type='button'>
-										<span className='hidden'>별점</span>
-									</StarButton>
-									<StarButton type='button'>
-										<span className='hidden'>별점</span>
-									</StarButton>
-									<StarButton type='button'>
-										<span className='hidden'>별점</span>
-									</StarButton>
+									<StarButton type='button' />
+									<StarButton type='button' />
+									<StarButton type='button' />
+									<StarButton type='button' />
+									<StarButton type='button' />
 								</StarButtonWrapper>
 							</S.CommentContentsTop>
 							<S.CommentContent>{comment.contents}</S.CommentContent>

@@ -11,8 +11,6 @@ export default function BoardCommentList() {
 			boardId: String(router.query.boardId)
 		}
 	})
-	console.log(data)
-	console.log(router.query.boardId)
 
 	return <BoardCommentListUI comments={data} />
 }
