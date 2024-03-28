@@ -11,7 +11,7 @@ export default function BoardCommentListUI({ comments }) {
 			{comments?.fetchBoardComments.map((comment) => (
 				<S.CommentListItem key={comment._id}>
 					<S.CommentContentWrapper>
-						<img src='@/images/img_profile.png' width={40} height={40} alt='프로필 사진' />
+						<img src='/images/img_profile.png' width={40} height={40} alt='프로필 사진' />
 						<div>
 							<S.CommentContentsTop>
 								<S.CommentWriter>{comment.writer}</S.CommentWriter>

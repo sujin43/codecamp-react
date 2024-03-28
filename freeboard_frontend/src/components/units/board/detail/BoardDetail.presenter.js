@@ -6,7 +6,7 @@ export default function BoardDetailUI({ data, onClickDelete, onClickEdit }) {
 			<S.ContentWrapper>
 				<S.Header>
 					<S.WriterWrapper>
-						<img src='../../../images/img_profile.png' width={56} height={56} alt='프로필 사진' />
+						<img src='/images/img_profile.png' width={56} height={56} alt='프로필 사진' />
 						<S.WriteInfo>
 							<S.Writer>{data?.fetchBoard?.writer}</S.Writer>
 							<S.Date>Date: 2021.02.18</S.Date>

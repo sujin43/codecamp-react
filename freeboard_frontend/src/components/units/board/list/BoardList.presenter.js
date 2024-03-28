@@ -116,10 +116,10 @@ export default function BoardListlUI({ data, onClickMove, onClickWrite }) {
 					</thead>
 					<tbody>
 						{data?.fetchBoards.map((board, index) => (
-							<S.TableRow>
+							<S.TableRow onClick={() => onClickMove(board._id)}>
 								<S.TableTd>{data.fetchBoards.length - index}</S.TableTd>
 								<S.TableTd>
-									<S.BoardTitle onClick={() => onClickMove(board._id)}>{board.title}</S.BoardTitle>
+									<S.BoardTitle>{board.title}</S.BoardTitle>
 								</S.TableTd>
 								<S.TableTd>{board.writer}</S.TableTd>
 								<S.TableTd>{board.createdAt.split('T')[0]}</S.TableTd>
