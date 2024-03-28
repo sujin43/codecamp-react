@@ -1,7 +1,11 @@
-import { StarButtonWrapper, StarButton } from '../write/BoardCommentWrite.styles'
+import { useRef } from 'react'
+import Rating from '../Rating/Rating.container'
 import * as S from './BoardCommentList.styles'
+import { StarButtonWrapper } from '../Rating/Rating.styles'
 
 export default function BoardCommentListUI({ comments }) {
+	const ref = useRef()
+
 	return (
 		<S.CommentListWrapper>
 			{comments?.fetchBoardComments.map((comment) => (
@@ -12,15 +16,19 @@ export default function BoardCommentListUI({ comments }) {
 							<S.CommentContentsTop>
 								<S.CommentWriter>{comment.writer}</S.CommentWriter>
 								<StarButtonWrapper>
-									<StarButton type='button' />
-									<StarButton type='button' />
-									<StarButton type='button' />
-									<StarButton type='button' />
-									<StarButton type='button' />
+									{[1, 2, 3, 4, 5].map((count, index) => (
+										<Rating
+											key={index}
+											value={comment.rating}
+											index={index}
+											ref={ref}
+											activeClass={index < comment.rating ? 'on' : ''}
+										/>
+									))}
 								</StarButtonWrapper>
 							</S.CommentContentsTop>
 							<S.CommentContent>{comment.contents}</S.CommentContent>
-							<S.CommentDate>{comment.createdAt}</S.CommentDate>
+							<S.CommentDate>{comment.createdAt.split('T')[0]}</S.CommentDate>
 						</div>
 					</S.CommentContentWrapper>
 					<S.CommentActionButtons>

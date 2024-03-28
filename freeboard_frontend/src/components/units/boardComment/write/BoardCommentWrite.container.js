@@ -1,39 +1,33 @@
 import { useEffect, useState } from 'react'
+import { useForm, useWatch } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import BoardCommentWriteUI from './BoardCommentWrite.presenter'
 import { CREATE_BOARD_COMMENT } from './BoardCommentWrite.queries'
 import { FETCH_BOARD_COMMENTS } from '../list/BoardCommentList.queries'
-import { useForm, useWatch } from 'react-hook-form'
 
 export default function BoardCommentWrite() {
 	const router = useRouter()
-	const [isActive, setIsActive] = useState(false)
+	const [disabled, setDisabled] = useState(false) //댓글등록 버튼
+	const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT)
 
 	const {
 		control,
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 		reset
-	} = useForm({
-		defaultValues: {
-			writer: '',
-			password: '',
-			contents: ''
-		}
-	})
+	} = useForm()
 
 	const watchedValue = useWatch({
-		name: ['writer', 'password', 'contents'],
+		name: ['writer', 'password', 'rating', 'contents'],
 		control
 	})
 
 	useEffect(() => {
-		watchedValue.every((value) => value !== '') ? setIsActive(true) : setIsActive(false)
+		watchedValue.every((value) => value) ? setDisabled(false) : setDisabled(true)
 	}, [watchedValue])
-
-	const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT)
 
 	const onSubmit = async (data) => {
 		try {
@@ -44,7 +38,7 @@ export default function BoardCommentWrite() {
 						writer: data.writer,
 						password: data.password,
 						contents: data.contents,
-						rating: data.rating
+						rating: parseFloat(data.rating)
 					}
 				},
 				refetchQueries: [
@@ -54,6 +48,7 @@ export default function BoardCommentWrite() {
 					}
 				]
 			})
+			reset() //form reset
 		} catch (error) {
 			alert(error)
 		}
@@ -61,17 +56,12 @@ export default function BoardCommentWrite() {
 
 	return (
 		<BoardCommentWriteUI
-			// writer={writer}
-			// password={password}
-			// contents={contents}
-			// onChangeWriter={onChangeWriter}
-			// onChangePassword={onChangePassword}
-			// onChangeContents={onChangeContents}
-			isActive={isActive}
+			disabled={disabled}
 			control={control}
 			register={register}
 			handleSubmit={handleSubmit}
 			errors={errors}
+			watch={watch}
 			onSubmit={onSubmit}
 		/>
 	)

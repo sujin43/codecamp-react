@@ -1,6 +1,12 @@
+import { useRef } from 'react'
+import { Controller } from 'react-hook-form'
+import Rating from '../Rating/Rating.container'
 import * as S from './BoardCommentWrite.styles'
+import { StarButtonWrapper } from '../Rating/Rating.styles'
 
 export default function BoardCommentWriteUI(props) {
+	const ref = useRef()
+
 	return (
 		<S.CommentInputSection>
 			<S.CommentTitle> 댓글</S.CommentTitle>
@@ -16,27 +22,35 @@ export default function BoardCommentWriteUI(props) {
 						placeholder='비밀번호'
 						{...props.register('password', { require: true })}
 					/>
-					<S.StarButtonWrapper>
-						<S.StarButton type='button' />
-						<S.StarButton type='button' />
-						<S.StarButton type='button' />
-						<S.StarButton type='button' />
-						<S.StarButton type='button' />
-					</S.StarButtonWrapper>
+					<Controller
+						name='rating'
+						control={props.control}
+						rules={{ required: true }}
+						render={({ field }) => (
+							<StarButtonWrapper>
+								{[1, 2, 3, 4, 5].map((count, index) => (
+									<Rating
+										{...field}
+										key={index}
+										value={count}
+										index={index}
+										ref={ref}
+										activeClass={index < field.value ? 'on' : ''}
+									/>
+								))}
+							</StarButtonWrapper>
+						)}
+					/>
 				</S.WriterInfoInputs>
 				<S.CommentInputWrapper>
 					<S.CommentInput
+						maxLength={100}
 						placeholder='개인정보를 공유 및 요청하거나, 명예 훼손, 무단 광고, 불법 정보 유포시 모니터링 후 삭제될 수 있으며, 이에 대한 민형사상 책임은 게시자에게 있습니다.'
 						{...props.register('contents', { require: true })}
 					/>
 					<S.CommentInputAction>
-						<S.CommentLengthCount>0/100</S.CommentLengthCount>
-						<S.CommentButton
-							type='submit'
-							value={'등록하기'}
-							isActive={props.isActive}
-							disabled={!props.isActive}
-						/>
+						<S.CommentLengthCount>{props.watch('contents')?.length}/100</S.CommentLengthCount>
+						<S.CommentButton type='submit' value={'등록하기'} disabled={props.disabled} />
 					</S.CommentInputAction>
 				</S.CommentInputWrapper>
 			</form>
