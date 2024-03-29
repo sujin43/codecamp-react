@@ -46,7 +46,7 @@ module.exports = {
 	 * true: 홀따옴표로 사용
 	 * false: 큰따옴표로 사용
 	 */
-	jsxSingleQuote: true,
+	jsxSingleQuote: false,
 
 	/**
 	 * @template: trailingComma: "<es5|none|all>"
@@ -55,7 +55,7 @@ module.exports = {
 	 * none: 후행쉼표 없음
 	 * all: 후행쉼표 포함
 	 */
-	trailingComma: 'none',
+	trailingComma: 'es5',
 
 	/**
 	 * @template: jsxBracketSameLine: <bool>
