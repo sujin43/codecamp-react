@@ -1,1 +1,1 @@
-yarn lint
+cd freeboard_frontend && yarn lint
