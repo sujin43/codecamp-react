@@ -1,4 +1,27 @@
+import { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
 import * as S from './BoardWrite.styles'
+
+interface IFormInput {
+	writer: string
+	password: string
+	title: string
+	contents: string
+	zipcode?: string
+	address1: string
+	address2: string
+	youtube?: string
+	main?: string
+}
+
+interface IBoardUIProps {
+	isEdit: boolean
+	register: UseFormRegister<IFormInput>
+	handleSubmit: UseFormHandleSubmit<IFormInput>
+	errors: FieldErrors<IFormInput>
+	onClickSubmit: (data: IFormInput) => Promise<void>
+	onClickUpdate: (data: IFormInput) => Promise<void>
+	isActive: boolean
+}
 
 export default function BoardWriteUI({
 	isEdit,
@@ -8,7 +31,7 @@ export default function BoardWriteUI({
 	onClickSubmit,
 	onClickUpdate,
 	isActive
-}) {
+}: IBoardUIProps) {
 	return (
 		<S.Wrapper>
 			<S.PageTitle>{isEdit ? '게시물 수정' : '게시물 등록'}</S.PageTitle>
@@ -42,13 +65,14 @@ export default function BoardWriteUI({
 						type='text'
 						placeholder='제목을 작성해주세요.'
 					/>
-					{errors.title?.type === 'required' && <S.ErrorText>제목을 입력해주세요.</S.ErrorText>}
+					{errors.title?.type?.toString() === 'required' && (
+						<S.ErrorText>제목을 입력해주세요.</S.ErrorText>
+					)}
 				</S.InputWrapper>
 				<S.InputWrapper>
 					<S.FormLabel>내용</S.FormLabel>
 					<S.FormTextArea
 						{...register('contents', { required: true })}
-						type='text'
 						placeholder='내용을 작성해주세요.'
 					/>
 					{errors.contents?.type === 'required' && <S.ErrorText>내용을 입력해주세요.</S.ErrorText>}

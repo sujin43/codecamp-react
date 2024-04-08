@@ -149,7 +149,7 @@ export const SubmitButton = styled.input`
 	font-size: 1.6rem;
 	font-weight: 500;
 	line-height: 2.4rem;
-	background-color: ${(props) => (props.isActive ? '#FFD600' : '#bdbdbd')};
+	background-color: ${(props: { isActive: boolean }) => (props.isActive ? '#FFD600' : '#bdbdbd')};
 	border: none;
 	border-radius: 5px;
 	margin: 8rem auto 0;

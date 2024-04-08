@@ -1,6 +1,13 @@
 import * as S from './BoardList.styles'
+import { IQuery } from '@/src/commons/types/generated/types'
 
-export default function BoardListlUI({ data, onClickMove, onClickWrite }) {
+interface IBoardListProps {
+	data?: Pick<IQuery, 'fetchBoards'>
+	onClickMove: (boardId: string) => void
+	onClickWrite: () => void
+}
+
+export default function BoardListlUI({ data, onClickMove, onClickWrite }: IBoardListProps) {
 	return (
 		<S.Wrapper>
 			<S.Title>베스트 게시글</S.Title>

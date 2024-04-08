@@ -5,8 +5,26 @@ import { useEffect, useState } from 'react'
 import { CREATE_BOARD } from './BoardWrite.queries'
 import { UPDATE_BOARD } from './BoardWrite.queries'
 import BoardWriteUI from './BoardWrite.presenter'
+import { IQuery } from '@/src/commons/types/generated/types'
 
-export default function BoardWrite({ isEdit, data }) {
+interface IFormInput {
+	writer: string
+	password: string
+	title: string
+	contents: string
+	zipcode?: string
+	address1: string
+	address2: string
+	youtube?: string
+	main?: string
+}
+
+interface IBoardWriteProps {
+	isEdit: boolean
+	data?: Pick<IQuery, 'fetchBoard'>
+}
+
+export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {
 	const router = useRouter()
 	const [createBoard] = useMutation(CREATE_BOARD)
 	const [updateBoard] = useMutation(UPDATE_BOARD)
@@ -17,10 +35,10 @@ export default function BoardWrite({ isEdit, data }) {
 		register,
 		handleSubmit,
 		formState: { errors }
-	} = useForm({
+	} = useForm<IFormInput>({
 		mode: 'onSubmit',
 		defaultValues: {
-			writer: data?.fetchBoard.writer,
+			writer: data?.fetchBoard.writer!,
 			password: '',
 			title: data?.fetchBoard.title,
 			contents: data?.fetchBoard.contents
@@ -37,8 +55,8 @@ export default function BoardWrite({ isEdit, data }) {
 		watchedValue.every((value) => value !== '') ? setIsActive(true) : setIsActive(false)
 	}, [watchedValue])
 
-	const onClickUpdate = async (data) => {
-		const updateBoardInput = {}
+	const onClickUpdate = async (data: IFormInput) => {
+		const updateBoardInput: { title?: string; contents?: string } = {}
 		if (data.title) updateBoardInput.title = data.title
 		if (data.contents) updateBoardInput.contents = data.contents
 		try {
@@ -56,7 +74,7 @@ export default function BoardWrite({ isEdit, data }) {
 		}
 	}
 
-	const onClickSubmit = async (data) => {
+	const onClickSubmit = async (data: IFormInput) => {
 		try {
 			const result = await createBoard({
 				variables: {
