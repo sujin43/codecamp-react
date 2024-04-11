@@ -2,16 +2,21 @@ import { useRef } from 'react'
 import Rating from '../Rating/Rating.container'
 import * as S from './BoardCommentList.styles'
 import { StarButtonWrapper } from '../Rating/Rating.styles'
+import type { IQuery, IBoardComment } from '@/src/commons/types/generated/types'
 
-export default function BoardCommentListUI({ comments }) {
+export default function BoardCommentListUI({
+	comments,
+}: {
+	comments: Pick<IQuery, 'fetchBoardComments'>
+}) {
 	const ref = useRef()
 
 	return (
 		<S.CommentListWrapper>
-			{comments?.fetchBoardComments.map((comment) => (
+			{comments?.fetchBoardComments?.map((comment: IBoardComment) => (
 				<S.CommentListItem key={comment._id}>
 					<S.CommentContentWrapper>
-						<img src='/images/img_profile.png' width={40} height={40} alt='프로필 사진' />
+						<img src="/images/img_profile.png" width={40} height={40} alt="프로필 사진" />
 						<div>
 							<S.CommentContentsTop>
 								<S.CommentWriter>{comment.writer}</S.CommentWriter>
@@ -32,11 +37,11 @@ export default function BoardCommentListUI({ comments }) {
 						</div>
 					</S.CommentContentWrapper>
 					<S.CommentActionButtons>
-						<S.ModifyButton type='button'>
-							<span className='hidden'>수정</span>
+						<S.ModifyButton type="button">
+							<span className="hidden">수정</span>
 						</S.ModifyButton>
-						<S.DeleteButton type='button'>
-							<span className='hidden'>삭제</span>
+						<S.DeleteButton type="button">
+							<span className="hidden">삭제</span>
 						</S.DeleteButton>
 					</S.CommentActionButtons>
 				</S.CommentListItem>

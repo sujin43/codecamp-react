@@ -8,10 +8,10 @@ export default function BoardsEditPage() {
 
 	const { data } = useQuery(FETCH_BOARD, {
 		variables: {
-			boardId: router.query.boardId
-		}
+			boardId: router.query.boardId,
+		},
 	})
 
-	//data=undefined일 때 BoardWrite.container에서 defaultValue 노출 안됨 => data 값 들어오면 수정 페이지로 이동할 수 있도록 수정
+	// data=undefined일 때 BoardWrite.container에서 defaultValue 노출 안됨 => data 값 들어오면 수정 페이지로 이동할 수 있도록 수정
 	return data ? <BoardWrite isEdit={true} data={data} /> : 'loadng'
 }
