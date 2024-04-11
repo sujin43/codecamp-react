@@ -6,14 +6,16 @@ import type { IQuery, IQueryFetchBoardCommentsArgs } from '@/src/commons/types/g
 
 export default function BoardCommentList() {
 	const router = useRouter()
+	if (!router || typeof router.query.boardId !== 'string') return <></>
 
 	const { data } = useQuery<Pick<IQuery, 'fetchBoardComments'>, IQueryFetchBoardCommentsArgs>(
 		FETCH_BOARD_COMMENTS,
 		{
 			variables: {
-				boardId: String(router.query.boardId),
+				boardId: router.query.boardId,
 			},
 		}
 	)
-	return data && <BoardCommentListUI comments={data} />
+
+	return data ? <BoardCommentListUI comments={data} /> : <div>Loading...</div>
 }

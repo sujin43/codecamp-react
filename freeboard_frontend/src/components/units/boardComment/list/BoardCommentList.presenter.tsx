@@ -9,7 +9,7 @@ export default function BoardCommentListUI({
 }: {
 	comments: Pick<IQuery, 'fetchBoardComments'>
 }) {
-	const ref = useRef()
+	const ref = useRef<HTMLInputElement>(null)
 
 	return (
 		<S.CommentListWrapper>
@@ -23,11 +23,12 @@ export default function BoardCommentListUI({
 								<StarButtonWrapper>
 									{[1, 2, 3, 4, 5].map((count, index) => (
 										<Rating
+											type="radio"
 											key={index}
 											value={comment.rating}
 											index={index}
 											ref={ref}
-											activeClass={index < comment.rating ? 'on' : ''}
+											className={index < comment.rating ? 'on' : ''}
 										/>
 									))}
 								</StarButtonWrapper>

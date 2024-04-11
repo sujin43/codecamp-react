@@ -1,11 +1,5 @@
 import * as S from './BoardList.styles'
-import type { IQuery } from '@/src/commons/types/generated/types'
-
-interface IBoardListProps {
-	data?: Pick<IQuery, 'fetchBoards'>
-	onClickMove: (boardId: string) => void
-	onClickWrite: () => void
-}
+import { IBoardListProps } from './BoardList.types'
 
 export default function BoardListlUI({ data, onClickMove, onClickWrite }: IBoardListProps) {
 	return (

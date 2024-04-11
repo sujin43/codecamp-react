@@ -9,6 +9,7 @@ import type {
 	IMutation,
 	IMutationCreateBoardCommentArgs,
 } from '@/src/commons/types/generated/types'
+import { IBoardCommnetWrite } from './BoardCommentWrite.types'
 
 export default function BoardCommentWrite() {
 	const router = useRouter()
@@ -25,7 +26,7 @@ export default function BoardCommentWrite() {
 		formState: { errors },
 		watch,
 		reset,
-	} = useForm<Pick<IMutation, 'createBoardComment'>>()
+	} = useForm<IBoardCommnetWrite>()
 
 	const watchedValue = useWatch({
 		name: ['writer', 'password', 'rating', 'contents'],
@@ -36,7 +37,7 @@ export default function BoardCommentWrite() {
 		watchedValue.every((value) => value) ? setDisabled(false) : setDisabled(true)
 	}, [watchedValue])
 
-	const onSubmit = async (data) => {
+	const onSubmit = async (data: IBoardCommnetWrite) => {
 		try {
 			const result = await createBoardComment({
 				variables: {
@@ -45,7 +46,7 @@ export default function BoardCommentWrite() {
 						writer: data.writer,
 						password: data.password,
 						contents: data.contents,
-						rating: parseFloat(data.rating),
+						rating: data.rating,
 					},
 				},
 				refetchQueries: [

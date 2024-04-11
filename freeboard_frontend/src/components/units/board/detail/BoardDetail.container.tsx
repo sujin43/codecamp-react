@@ -3,13 +3,14 @@ import type { NextRouter } from 'next/router'
 import { useRouter } from 'next/router'
 import BoardDetailUI from './BoardDetail.presenter'
 import { FETCH_BOARD, DELETE_BOARD } from './BoardDetail.queries'
+import { IQuery, IQueryFetchBoardArgs } from '@/src/commons/types/generated/types'
 
 export default function BoardDetail() {
 	const router: NextRouter = useRouter()
 	const boardId: string = typeof router.query.boardId === 'string' ? router.query.boardId : ''
 
 	const [deleteBoard] = useMutation(DELETE_BOARD)
-	const { data } = useQuery(FETCH_BOARD, {
+	const { data } = useQuery<Pick<IQuery, 'fetchBoard'>, IQueryFetchBoardArgs>(FETCH_BOARD, {
 		variables: {
 			boardId,
 		},
@@ -30,11 +31,5 @@ export default function BoardDetail() {
 		void router.push('/boards')
 	}
 
-	return (
-		<BoardDetailUI
-			data={data?.fetchBoard}
-			onClickDelete={onClickDelete}
-			onClickEdit={onClickEdit}
-		/>
-	)
+	return <BoardDetailUI data={data} onClickDelete={onClickDelete} onClickEdit={onClickEdit} />
 }

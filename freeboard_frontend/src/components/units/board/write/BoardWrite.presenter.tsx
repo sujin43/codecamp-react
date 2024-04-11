@@ -1,16 +1,5 @@
-import type { FieldErrors, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
 import * as S from './BoardWrite.styles'
-import type { IBoard } from '@/src/commons/types/generated/types'
-
-interface IBoardUIProps {
-	isEdit: boolean
-	register: UseFormRegister<IBoard & { password: string }>
-	handleSubmit: UseFormHandleSubmit<IBoard & { password: string }>
-	errors: FieldErrors<IBoard & { password: string }>
-	onClickSubmit: (data: IBoard & { password: string }) => Promise<void>
-	onClickUpdate: (data: IBoard & { password: string }) => Promise<void>
-	isActive: boolean
-}
+import { IBoardWriteUIProps } from './BoardWrite.types'
 
 export default function BoardWriteUI({
 	isEdit,
@@ -20,7 +9,7 @@ export default function BoardWriteUI({
 	onClickSubmit,
 	onClickUpdate,
 	isActive,
-}: IBoardUIProps) {
+}: IBoardWriteUIProps) {
 	return (
 		<S.Wrapper>
 			<S.PageTitle>{isEdit ? '게시물 수정' : '게시물 등록'}</S.PageTitle>

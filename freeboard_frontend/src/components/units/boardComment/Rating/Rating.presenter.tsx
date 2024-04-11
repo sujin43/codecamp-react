@@ -1,8 +1,9 @@
-import { forwardRef } from 'react'
+import { ForwardedRef, forwardRef } from 'react'
 import { StarButton } from './Rating.styles'
+import { IRating } from './Rating.types'
 
-const RatingUI = forwardRef((props, ref) => {
-	return <StarButton type='radio' {...props} ref={ref} className={props.activeClass} />
+const RatingUI = forwardRef((props: IRating, ref: ForwardedRef<HTMLInputElement>) => {
+	return <StarButton {...props} ref={ref} />
 })
 
 export default RatingUI

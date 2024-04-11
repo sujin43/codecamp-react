@@ -1,24 +1,7 @@
 import * as S from './BoardDetail.styles'
+import { IBoardDetailProps } from './BoardDetail.types'
 
-interface IFormInput {
-	writer: string
-	password: string
-	title: string
-	contents: string
-	zipcode?: string
-	address1: string
-	address2: string
-	youtube?: string
-	main?: string
-}
-
-interface IBoardDetail {
-	data: IFormInput
-	onClickDelete: () => void
-	onClickEdit: () => void
-}
-
-export default function BoardDetailUI({ data, onClickDelete, onClickEdit }: IBoardDetail) {
+export default function BoardDetailUI({ data, onClickDelete, onClickEdit }: IBoardDetailProps) {
 	return (
 		<S.Wrapper>
 			<S.ContentWrapper>
@@ -26,7 +9,7 @@ export default function BoardDetailUI({ data, onClickDelete, onClickEdit }: IBoa
 					<S.WriterWrapper>
 						<img src="/images/img_profile.png" width={56} height={56} alt="프로필 사진" />
 						<S.WriteInfo>
-							<S.Writer>{data?.writer}</S.Writer>
+							<S.Writer>{data?.fetchBoard.writer}</S.Writer>
 							<S.Date>Date: 2021.02.18</S.Date>
 						</S.WriteInfo>
 					</S.WriterWrapper>
@@ -40,11 +23,11 @@ export default function BoardDetailUI({ data, onClickDelete, onClickEdit }: IBoa
 					</div>
 				</S.Header>
 				<S.Contents>
-					<S.Title>{data?.title}</S.Title>
+					<S.Title>{data?.fetchBoard.title}</S.Title>
 					<S.ContentImg>
 						<img src="" alt="" />
 					</S.ContentImg>
-					<S.Content>{data?.contents}</S.Content>
+					<S.Content>{data?.fetchBoard.contents}</S.Content>
 					<S.Video></S.Video>
 					<S.ButtonWrapper>
 						<S.GoodButton type="button">

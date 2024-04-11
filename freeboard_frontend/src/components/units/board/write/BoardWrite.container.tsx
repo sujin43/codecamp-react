@@ -4,12 +4,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
 import BoardWriteUI from './BoardWrite.presenter'
-import type { IQuery, IBoard } from '@/src/commons/types/generated/types'
-
-interface IBoardWriteProps {
-	isEdit: boolean
-	data?: Pick<IQuery, 'fetchBoard'>
-}
+import { IBoardWriteProps } from './BoardWrite.types'
+import type { ICreateBoardInput } from '@/src/commons/types/generated/types'
 
 export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {
 	const router = useRouter()
@@ -22,10 +18,10 @@ export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<IBoard & { password: string }>({
+	} = useForm<ICreateBoardInput>({
 		mode: 'onSubmit',
 		defaultValues: {
-			writer: String(data?.fetchBoard.writer),
+			writer: data?.fetchBoard.writer,
 			password: '',
 			title: data?.fetchBoard.title,
 			contents: data?.fetchBoard.contents,
@@ -42,7 +38,7 @@ export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {
 		watchedValue.every((value) => value !== '') ? setIsActive(true) : setIsActive(false)
 	}, [watchedValue])
 
-	const onClickUpdate = async (data: IBoard & { password: string }) => {
+	const onClickUpdate = async (data: ICreateBoardInput) => {
 		const updateBoardInput: { title?: string; contents?: string } = {}
 		if (data.title) updateBoardInput.title = data.title
 		if (data.contents) updateBoardInput.contents = data.contents
@@ -61,7 +57,7 @@ export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {
 		}
 	}
 
-	const onClickSubmit = async (data: IBoard & { password: string }) => {
+	const onClickSubmit = async (data: ICreateBoardInput) => {
 		try {
 			const result = await createBoard({
 				variables: {
