@@ -1,5 +1,5 @@
 import * as S from './BoardList.styles'
-import { IBoardListProps } from './BoardList.types'
+import type { IBoardListProps } from './BoardList.types'
 
 export default function BoardListlUI({ data, onClickMove, onClickWrite }: IBoardListProps) {
 	return (

@@ -1,5 +1,5 @@
 import * as S from './BoardDetail.styles'
-import { IBoardDetailProps } from './BoardDetail.types'
+import type { IBoardDetailProps } from './BoardDetail.types'
 
 export default function BoardDetailUI({ data, onClickDelete, onClickEdit }: IBoardDetailProps) {
 	return (

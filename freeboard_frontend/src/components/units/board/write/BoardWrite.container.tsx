@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { CREATE_BOARD, UPDATE_BOARD } from './BoardWrite.queries'
 import BoardWriteUI from './BoardWrite.presenter'
-import { IBoardWriteProps } from './BoardWrite.types'
+import type { IBoardWriteProps } from './BoardWrite.types'
 import type { ICreateBoardInput } from '@/src/commons/types/generated/types'
 
 export default function BoardWrite({ isEdit, data }: IBoardWriteProps) {

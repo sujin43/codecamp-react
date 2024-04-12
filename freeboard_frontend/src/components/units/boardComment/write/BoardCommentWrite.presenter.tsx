@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 import Rating from '../Rating/Rating.container'
 import * as S from './BoardCommentWrite.styles'
 import { StarButtonWrapper } from '../Rating/Rating.styles'
-import { IBoardCommentWriteProps } from './BoardCommentWrite.types'
+import type { IBoardCommentWriteProps } from './BoardCommentWrite.types'
 
 export default function BoardCommentWriteUI(props: IBoardCommentWriteProps) {
 	const ref = useRef<HTMLInputElement>(null)

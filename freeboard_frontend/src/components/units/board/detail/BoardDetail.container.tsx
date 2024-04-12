@@ -3,7 +3,7 @@ import type { NextRouter } from 'next/router'
 import { useRouter } from 'next/router'
 import BoardDetailUI from './BoardDetail.presenter'
 import { FETCH_BOARD, DELETE_BOARD } from './BoardDetail.queries'
-import { IQuery, IQueryFetchBoardArgs } from '@/src/commons/types/generated/types'
+import type { IQuery, IQueryFetchBoardArgs } from '@/src/commons/types/generated/types'
 
 export default function BoardDetail() {
 	const router: NextRouter = useRouter()
