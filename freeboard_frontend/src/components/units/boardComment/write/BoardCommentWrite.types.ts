@@ -1,4 +1,5 @@
 import { IBoardComment } from '@/src/commons/types/generated/types'
+import { ReactNode } from 'react'
 import {
 	Control,
 	FieldErrors,
@@ -10,6 +11,12 @@ import {
 export type IBoardCommnetWrite = IBoardComment & { password: string }
 
 export interface IBoardCommentWriteProps {
+	children?: ReactNode
+	comment?: IBoardComment
+	onClickEdit?: () => void
+}
+
+export interface IBoardCommentWriteUIProps {
 	disabled: boolean
 	register: UseFormRegister<IBoardCommnetWrite>
 	control: Control<IBoardCommnetWrite>
@@ -17,4 +24,6 @@ export interface IBoardCommentWriteProps {
 	errors: FieldErrors<IBoardCommnetWrite>
 	watch: UseFormWatch<IBoardCommnetWrite>
 	onSubmit: (data: IBoardCommnetWrite) => Promise<void>
+	children?: ReactNode
+	isEdit: boolean
 }

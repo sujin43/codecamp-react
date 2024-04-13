@@ -3,21 +3,31 @@ import { useForm, useWatch } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/client'
 import BoardCommentWriteUI from './BoardCommentWrite.presenter'
-import { CREATE_BOARD_COMMENT } from './BoardCommentWrite.queries'
+import { CREATE_BOARD_COMMENT, UPDATE_BOARD_COMMENT } from './BoardCommentWrite.queries'
 import { FETCH_BOARD_COMMENTS } from '../list/BoardCommentList.queries'
 import type {
 	IMutation,
 	IMutationCreateBoardCommentArgs,
+	IMutationUpdateBoardCommentArgs,
 } from '@/src/commons/types/generated/types'
-import { IBoardCommnetWrite } from './BoardCommentWrite.types'
+import { IBoardCommentWriteProps, IBoardCommnetWrite } from './BoardCommentWrite.types'
 
-export default function BoardCommentWrite() {
+export default function BoardCommentWrite({
+	children,
+	comment,
+	onClickEdit,
+}: IBoardCommentWriteProps) {
 	const router = useRouter()
 	const [disabled, setDisabled] = useState(false) // 댓글등록 버튼
 	const [createBoardComment] = useMutation<
 		Pick<IMutation, 'createBoardComment'>,
 		IMutationCreateBoardCommentArgs
 	>(CREATE_BOARD_COMMENT)
+
+	const [updateBoardComment] = useMutation<
+		Pick<IMutation, 'updateBoardComment'>,
+		IMutationUpdateBoardCommentArgs
+	>(UPDATE_BOARD_COMMENT)
 
 	const {
 		control,
@@ -26,7 +36,13 @@ export default function BoardCommentWrite() {
 		formState: { errors },
 		watch,
 		reset,
-	} = useForm<IBoardCommnetWrite>()
+	} = useForm<IBoardCommnetWrite>({
+		defaultValues: {
+			writer: comment?.writer,
+			contents: comment?.contents,
+			rating: comment?.rating,
+		},
+	})
 
 	const watchedValue = useWatch({
 		name: ['writer', 'password', 'rating', 'contents'],
@@ -37,17 +53,16 @@ export default function BoardCommentWrite() {
 		watchedValue.every((value) => value) ? setDisabled(false) : setDisabled(true)
 	}, [watchedValue])
 
-	const onSubmit = async (data: IBoardCommnetWrite) => {
+	const onUpdate = async (data: IBoardCommnetWrite) => {
 		try {
-			const result = await createBoardComment({
+			const result = await updateBoardComment({
 				variables: {
-					boardId: String(router.query.boardId),
-					createBoardCommentInput: {
-						writer: data.writer,
-						password: data.password,
+					boardCommentId: comment?._id!,
+					updateBoardCommentInput: {
 						contents: data.contents,
-						rating: data.rating,
+						rating: Number(data.rating),
 					},
+					password: data.password,
 				},
 				refetchQueries: [
 					{
@@ -56,11 +71,39 @@ export default function BoardCommentWrite() {
 					},
 				],
 			})
+			onClickEdit?.()
 			console.log(result)
 			reset() // form reset
 		} catch (error) {
 			alert(error)
 		}
+	}
+
+	const onSubmit = async (data: IBoardCommnetWrite) => {
+		if (typeof router.query.boardId === 'string')
+			try {
+				const result = await createBoardComment({
+					variables: {
+						boardId: router.query.boardId,
+						createBoardCommentInput: {
+							writer: data.writer,
+							password: data.password,
+							contents: data.contents,
+							rating: Number(data.rating),
+						},
+					},
+					refetchQueries: [
+						{
+							query: FETCH_BOARD_COMMENTS,
+							variables: { boardId: router.query.boardId },
+						},
+					],
+				})
+				console.log(result)
+				reset() // form reset
+			} catch (error) {
+				alert(error)
+			}
 	}
 
 	return (
@@ -71,7 +114,9 @@ export default function BoardCommentWrite() {
 			handleSubmit={handleSubmit}
 			errors={errors}
 			watch={watch}
-			onSubmit={onSubmit}
+			onSubmit={Boolean(!!comment) ? onUpdate : onSubmit}
+			children={children}
+			isEdit={Boolean(!!comment)}
 		/>
 	)
 }

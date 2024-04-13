@@ -3,14 +3,14 @@ import { Controller } from 'react-hook-form'
 import Rating from '../Rating/Rating.container'
 import * as S from './BoardCommentWrite.styles'
 import { StarButtonWrapper } from '../Rating/Rating.styles'
-import type { IBoardCommentWriteProps } from './BoardCommentWrite.types'
+import type { IBoardCommentWriteUIProps } from './BoardCommentWrite.types'
 
-export default function BoardCommentWriteUI(props: IBoardCommentWriteProps) {
+export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
 	const ref = useRef<HTMLInputElement>(null)
 
 	return (
 		<S.CommentInputSection>
-			<S.CommentTitle> 댓글</S.CommentTitle>
+			{props.children}
 			<form onSubmit={props.handleSubmit(props.onSubmit)}>
 				<S.WriterInfoInputs>
 					<S.WriterInfoInput
@@ -52,7 +52,11 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteProps) {
 					/>
 					<S.CommentInputAction>
 						<S.CommentLengthCount>{props.watch('contents')?.length}/100</S.CommentLengthCount>
-						<S.CommentButton type="submit" value={'등록하기'} disabled={props.disabled} />
+						<S.CommentButton
+							type="submit"
+							value={props.isEdit ? '수정하기' : '등록하기'}
+							disabled={props.disabled}
+						/>
 					</S.CommentInputAction>
 				</S.CommentInputWrapper>
 			</form>

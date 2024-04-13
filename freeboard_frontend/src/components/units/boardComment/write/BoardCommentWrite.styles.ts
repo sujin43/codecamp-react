@@ -2,12 +2,14 @@ import styled from '@emotion/styled'
 
 export const CommentInputSection = styled.div`
 	width: 120rem;
-	margin: 8.6rem auto 0;
 	padding-top: 4rem;
+	margin: 8.6rem auto 3rem;
 	border-top: 1px solid #bdbdbd;
 `
 
 export const CommentTitle = styled.span`
+	width: 100%;
+	display: block;
 	font-size: 1.8rem;
 	font-weight: 500;
 	line-height: 2.7rem;
